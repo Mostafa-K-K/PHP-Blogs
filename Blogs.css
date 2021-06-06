@@ -1,0 +1,289 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(to right, rgb(67, 67, 67), rgb(0, 0, 0));
+}
+
+.panelHome {
+    margin-top: 100px;
+    width: 50%;
+    padding: 50px 0 60px 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFFFFF;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.panelHome p {
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.inputfilestyle::-webkit-file-upload-button, .inputfilestyleNew::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.inputfilestyle, .inputfilestyleNew {
+    width: 100%;
+}
+
+.inputfilestyle::before {
+    content: 'Select files';
+    display: inline-block;
+    padding: 10px 17%;
+    outline: none;
+    cursor: pointer;
+    font-size: 12pt;
+}
+
+.inputfilestyleNew::before {
+    content: 'Change your files';
+    display: inline-block;
+    padding: 10px 17%;
+    outline: none;
+    cursor: pointer;
+    font-size: 15pt;
+}
+
+.divofFile {
+    width: 100%;
+}
+
+.divofTextarea {
+    border-radius: 20px;
+    width: 100%;
+    margin-top: 20px;
+    background: #f1f1f1;
+}
+
+.allin {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+}
+
+.titleBlog {
+    font-weight: bold;
+}
+
+*:focus {
+    outline: none;
+}
+
+input[type=text], #overview {
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 20px;
+}
+
+form {
+    margin-top: 50px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container {
+    border-radius: 20px;
+    padding: 10px 25px 40px 25px;
+    background-color: white;
+    margin-bottom: 50px;
+}
+
+.savebtn, .panelHome button {
+    margin-top: 30px;
+    background-image: linear-gradient(to right, rgb(67, 67, 67), rgb(0, 0, 0));
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+.inputfilestyle, .inputfilestyleNew {
+    margin-top: 30px;
+    color: black;
+    padding: 16px 20px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-size: 20px;
+    border-radius: 20px;
+}
+
+.savebtn:hover, .inputfilestyle:hover, .inputfilestyleNew:hover, .panelHome button:hover {
+    background-image: linear-gradient(to left, rgb(130, 0, 0), rgb(200, 0, 0));
+    opacity: 1;
+    color: white;
+}
+
+.blogsinpage {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10%;
+}
+
+.bolgswidthinpage {
+    width: 40%;
+    margin: 20px;
+    padding-top: 20px;
+}
+
+.bolgswid {
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 0px 20px 20px 20px;
+    border-radius: 20px;
+}
+
+.divbutdetonsed {
+    background-color: red;
+    width: 40%;
+    padding: 0px 20px 20px 20px;
+    margin: 20px;
+}
+
+.bolgswidthinpage h1 {
+    text-align: center;
+}
+
+.headerblog h1 {
+    margin-right: 35%;
+}
+
+.bolgswidthinpage p {
+    margin-left: 20px;
+    text-align: justify;
+}
+
+.imageBlog {
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+}
+
+.imageBlogsmal {
+    border-radius: 20px;
+    height: 90%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.divforimg {
+    width: 100%;
+}
+
+.divforimg a {
+    color: black;
+}
+
+.sizeFile, .nameFile, .formatFile, .dateFile {
+    float: right;
+    color: gray;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.divflcol {
+    display: flex;
+    flex-flow: column;
+}
+
+.round-button {
+    width: 30px;
+    margin-right: -7%;
+    margin-top: -3%;
+}
+
+.round-button-circle {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    border-radius: 50%;
+    background-image: linear-gradient(to left, rgb(130, 0, 0), rgb(200, 0, 0));
+}
+
+.round-button-circle:hover {
+    background-image: linear-gradient(to right, rgb(67, 67, 67), rgb(0, 0, 0));
+}
+
+.round-button a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding-top: 25%;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.headerblog {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+}
+
+.round-button-edit {
+    margin-top: 15px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.round-button-edit a {
+    border-radius: 10px;
+    padding: 7px 30px 7px 30px;
+    color: #FFFFFF;
+    background-image: linear-gradient(to right, rgb(67, 67, 67), rgb(20, 20, 20));
+    text-decoration: none;
+}
+
+.round-button-edit a:hover {
+    background-image: linear-gradient(to left, rgb(130, 0, 0), rgb(200, 0, 0));
+}
+
+.previous, .next {
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+
+.previous {
+    margin-right: 5px;
+    background-image: linear-gradient(to right, rgb(235, 235, 235), rgb(100, 100, 100));
+    color: #FFFFFF;
+}
+
+.previous:hover {
+    background-image: linear-gradient(to right, rgb(180, 180, 180), rgb(50, 50, 50));
+    color: #FFFFFF;
+}
+
+.next {
+    margin-left: 5px;
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.next:hover {
+    background-image: linear-gradient(to right, rgb(130, 0, 0), rgb(200, 0, 0));
+    color: #FFFFFF;
+}
+
+.btnPreNext {
+    padding: auto;
+    margin: 30px 46% 50px 34%;
+}
