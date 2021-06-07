@@ -115,9 +115,8 @@ foreach ($myBlogs as $key => $val) {
             <p>" . $val['content'] . "</p>
             <div>
             <div class='divforimg'>
-            <a href='http://localhost/codi/PHP-Basics/Exercise-02/upload/" . $val['name'] . "'>
             ";
-
+            
         if ($val['format'] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
             echo "<img src='./icons/XLSXicon.png' class='imageBlogsmal'/><br />";
         } else if ($val['format'] == "application/vnd.openxmlformats-officedocument.presentationml.presentation") {
@@ -133,7 +132,6 @@ foreach ($myBlogs as $key => $val) {
         } else {echo "<img src='./icons/ERRicon.png' class='imageBlog'/>";}
 
         echo "
-            </a>
             </div>
             <span class='nameFile'>" . $val['name'] . "</span><br />
             <span class='formatFile'>" . $val['format'] . "</span><br />
