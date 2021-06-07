@@ -14,7 +14,8 @@ if (isset($_POST['btn-signup'])) {
     $uppercase = preg_match('@[A-Z]@', $password);
     $lowercase = preg_match('@[a-z]@', $password);
     $number = preg_match('@[0-9]@', $password);
-
+    // $specialChars=
+    
     if ($username == "") {
         $error[] = "Provide username !";
     } else if ($email == "") {
@@ -25,7 +26,7 @@ if (isset($_POST['btn-signup'])) {
         $error[] = "provide password !";
     } else if ($confirmpass == "") {
         $error[] = "please confirm password !";
-    } else if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+    } else if (!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
         $error[] = "Password should be at least 8 characters, <br />
                     1 upper case letter, <br />
                     1 lower case letter, <br />

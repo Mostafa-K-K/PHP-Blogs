@@ -32,8 +32,8 @@ class USER
             $stmt = $this->db->prepare("SELECT * FROM Users WHERE username=? AND password=? OR email=? AND password=?");
             $stmt->execute([$username, $password, $username, $password]);
             $isUser = $stmt->fetch(PDO::FETCH_ASSOC);
+            $userID = $isUser['userID'];
             if ($isUser > 0) {
-                $_SESSION['user_session'] = $isUser['userID'];
                 setcookie('userID', $userID, time() + (86400 * 30), "/");
                 return true;
             } else {
@@ -46,7 +46,7 @@ class USER
 
     public function is_loggedin()
     {
-        if (isset($_SESSION['user_session'])) {
+        if (isset($_COOKIE['userID'])) {
             return true;
         }
     }
@@ -58,7 +58,6 @@ class USER
 
     public function logout()
     {
-        session_destroy();
         setcookie('userID', '', time() - 3600, '/');
         return true;
     }

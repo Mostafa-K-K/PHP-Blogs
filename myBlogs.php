@@ -83,23 +83,28 @@ if (!$user->is_loggedin()) {
 
         <?php
 
-$userID = $_SESSION['user_session'];
+$rowsPerPage = 10;
 
-$stmt = $DB_con->prepare("SELECT * FROM Blogs WHERE userID=:userID");
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    $page = 1;
+}
+
+$previousRows = ($page - 1) * $rowsPerPage;
+
+$userID = $_COOKIE['userID'];
+
+$stmt = $DB_con->prepare("SELECT * FROM Blogs WHERE userID=:userID ORDER BY blogID DESC LIMIT $previousRows, $rowsPerPage");
 $stmt->execute(array(":userID" => $userID));
 $myBlogs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$array = data($myBlogs);
+foreach ($myBlogs as $key => $val) {
 
-function data($array)
-{
+    if (is_array($val)) {
+        $formImg = explode("/", $val['format']);
 
-    foreach ($array as $key => $val) {
-
-        if (is_array($val)) {
-            $formImg = explode("/", $val['format']);
-
-            echo "
+        echo "
             <div class='bolgswidthinpage'>
             <div class='bolgswid'>
             <div class='headerblog'>
@@ -113,21 +118,21 @@ function data($array)
             <a href='http://localhost/codi/PHP-Basics/Exercise-02/upload/" . $val['name'] . "'>
             ";
 
-            if ($val['format'] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
-                echo "<img src='./icons/XLSXicon.png' class='imageBlogsmal'/><br />";
-            } else if ($val['format'] == "application/vnd.openxmlformats-officedocument.presentationml.presentation") {
-                echo "<img src='./icons/PPTXicon.png' class='imageBlogsmal'/><br />";
-            } else if ($val['format'] == "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
-                echo " <img src='./icons/DOCXicon.png' class='imageBlogsmal'/><br />";
-            } else if ($val['format'] == "application/pdf") {
-                echo "<img src='./icons/PDFicon.png' class='imageBlogsmal'/><br />";
-            } else if ($val['format'] == "application/zip") {
-                echo "<img src='./icons/ZIPicon.png' class='imageBlogsmal'/><br />";
-            } else if ($formImg[0] == "image") {
-                echo "<img src='" . $val['path'] . $val['name'] . "' class='imageBlog'/>";
-            } else {echo "<img src='./icons/ERRicon.png' class='imageBlog'/>";}
+        if ($val['format'] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
+            echo "<img src='./icons/XLSXicon.png' class='imageBlogsmal'/><br />";
+        } else if ($val['format'] == "application/vnd.openxmlformats-officedocument.presentationml.presentation") {
+            echo "<img src='./icons/PPTXicon.png' class='imageBlogsmal'/><br />";
+        } else if ($val['format'] == "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
+            echo " <img src='./icons/DOCXicon.png' class='imageBlogsmal'/><br />";
+        } else if ($val['format'] == "application/pdf") {
+            echo "<img src='./icons/PDFicon.png' class='imageBlogsmal'/><br />";
+        } else if ($val['format'] == "application/zip") {
+            echo "<img src='./icons/ZIPicon.png' class='imageBlogsmal'/><br />";
+        } else if ($formImg[0] == "image") {
+            echo "<img src='" . $val['path'] . $val['name'] . "' class='imageBlog'/>";
+        } else {echo "<img src='./icons/ERRicon.png' class='imageBlog'/>";}
 
-            echo "
+        echo "
             </a>
             </div>
             <span class='nameFile'>" . $val['name'] . "</span><br />
@@ -139,9 +144,29 @@ function data($array)
             </div>
             </div>
             ";
-        }
     }
 }
+
+$stmt = $DB_con->prepare("SELECT COUNT(title) AS numrows FROM Blogs WHERE userID=:userID");
+$stmt->execute(array(":userID" => $userID));
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$numrows = $row['numrows'];
+$lastPage = ceil($numrows / $rowsPerPage);
+$self = $_SERVER['PHP_SELF'];
+
+echo "<div class='btnPreNext'>";
+if ($page > 1) {
+    echo "<a href='" . $self . "?page=" . ($page - 1) . "' class='previous'>&laquo; Previous</a>";
+}
+if ($page == $lastPage) {
+    echo "<a href='" . $self . "?page=1' class='next'>First &raquo;</a>";
+}
+if ($page < $lastPage) {
+    echo "<a href='" . $self . "?page=" . ($page + 1) . "' class='next'>Next &raquo;</a>";
+}
+echo "</div>";
+
 ?>
     </div>
 

@@ -5,7 +5,7 @@ if (!$user->is_loggedin()) {
     $user->redirect('Login.php');
 }
 
-$userID = $_SESSION['user_session'];
+$userID = $_COOKIE['userID'];
 
 if (isset($_POST['btn-save'])) {
     $title = $_POST['title'];

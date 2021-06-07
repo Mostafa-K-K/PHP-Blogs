@@ -4,7 +4,7 @@ require_once 'Dbconfig.php';
 if (!$user->is_loggedin()) {
     $user->redirect('Login.php');
 }
-$userID = $_SESSION['user_session'];
+$userID = $_COOKIE['userID'];
 $stmt = $DB_con->prepare("SELECT * FROM Users WHERE userID=:userID");
 $stmt->execute(array(":userID" => $userID));
 $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
